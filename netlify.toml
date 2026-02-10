@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+  command = ""
+
+[context.production.environment]
+  # Add any environment variables for production here
+
+[dev]
+  command = ""
+  port = 8888
