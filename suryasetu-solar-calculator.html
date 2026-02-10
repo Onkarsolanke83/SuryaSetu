@@ -33,14 +33,17 @@
         }
         
         :root {
-            /* Logo-based color palette */
-            --primary-yellow: #FFD700;
-            --primary-green: #4CAF50;
-            --dark-gray: #2C2C2C;
-            --light-bg: #F8F9FA;
+            /* Professional solar palette */
+            --primary-green: #00A86B;
+            --primary-blue: #0066CC;
+            --accent-orange: #FF8C42;
+            --light-green: #E8F5E9;
+            --light-blue: #E3F2FD;
+            --dark-gray: #1A1A1A;
+            --light-bg: #F5F7FA;
             --white: #FFFFFF;
-            --shadow: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --shadow: 0 4px 6px rgba(0,102,204,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,102,204,0.15);
         }
         
         body {
@@ -171,50 +174,53 @@
         /* Calculator Section */
         .calculator-section {
             background: var(--light-bg);
+            padding: 2rem 0;
         }
         
         .section-title {
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.75rem;
             color: var(--dark-gray);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
         
         .section-subtitle {
             text-align: center;
             color: #666;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
         }
         
         .calculator-card {
             background: var(--white);
-            border-radius: 15px;
-            padding: 2.5rem;
+            border-radius: 12px;
+            padding: 1.5rem;
             box-shadow: var(--shadow-lg);
             max-width: 600px;
             margin: 0 auto;
         }
         
         .input-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
             font-weight: 600;
             color: var(--dark-gray);
+            font-size: 0.9rem;
         }
         
         input[type="number"],
         input[type="text"],
-        input[type="tel"] {
+        input[type="tel"],
+        select {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.6rem 0.8rem;
             border: 2px solid #E0E0E0;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: border-color 0.3s ease;
         }
         
@@ -225,32 +231,74 @@
         
         .calculate-btn {
             width: 100%;
-            background: var(--primary-yellow);
-            color: var(--dark-gray);
-            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent-orange), #FF6B35);
+            color: var(--white);
+            padding: 0.8rem;
             border-radius: 10px;
             border: none;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
         }
         
         .calculate-btn:hover {
-            background: #FFC700;
+            background: linear-gradient(135deg, #FF6B35, var(--accent-orange));
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 6px 16px rgba(255, 140, 66, 0.4);
         }
         
-        /* Results */
+        /* Results Dashboard */
         .results {
             display: none;
-            background: linear-gradient(135deg, var(--primary-green) 0%, #45a049 100%);
-            color: var(--white);
-            padding: 2rem;
+            background: linear-gradient(135deg, #F0F9FF 0%, #E8F5FF 100%);
+            padding: 1.5rem;
             border-radius: 15px;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             animation: slideIn 0.5s ease;
+        }
+        
+        .results.show {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .result-item {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(76, 175, 80, 0.08);
+            border-left: 4px solid var(--primary-green);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .result-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.15);
+        }
+        
+        .result-label {
+            font-size: 0.7rem;
+            color: #888;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.4rem;
+            line-height: 1.2;
+        }
+        
+        .result-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            word-break: break-word;
+        }
+        
+        .result-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
         }
         
         @keyframes slideIn {
@@ -264,62 +312,61 @@
             }
         }
         
-        .results.show {
-            display: block;
-        }
-        
-        .result-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .result-item:last-child {
-            border-bottom: none;
-        }
-        
-        .result-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .result-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-top: 0.25rem;
-        }
-        
         /* Benefits Grid */
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
         
         .benefit-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
+            background: linear-gradient(135deg, var(--white) 0%, #F5F5F5 100%);
+            padding: 1.2rem;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-yellow));
         }
         
         .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.2);
+            border-color: var(--primary-green);
+            background: linear-gradient(135deg, #F0F9FF 0%, #E8F5FF 100%);
         }
         
         .benefit-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.6rem;
+            display: block;
         }
         
         .benefit-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
             color: var(--primary-green);
+        }
+        
+        .benefit-card p {
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.4;
+            margin: 0;
         }
         
         /* How It Works */
@@ -341,8 +388,8 @@
         .step-number {
             width: 60px;
             height: 60px;
-            background: var(--primary-yellow);
-            color: var(--dark-gray);
+            background: linear-gradient(135deg, var(--accent-orange), #FF6B35);
+            color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -360,7 +407,7 @@
         
         /* Trust Badges */
         .trust-section {
-            background: var(--primary-green);
+            background: linear-gradient(135deg, var(--primary-blue), #004A99);
             color: var(--white);
             padding: 3rem 5%;
             text-align: center;
@@ -391,48 +438,50 @@
         
         /* Site Visit Section */
         .site-visit-section {
-            background: linear-gradient(135deg, var(--primary-yellow) 0%, #FFA500 100%);
-            padding: 4rem 5%;
+            background: linear-gradient(135deg, var(--light-blue) 0%, #F0F7FF 100%);
+            padding: 3rem 5%;
             text-align: center;
         }
         
         .site-visit-form {
             background: var(--white);
             max-width: 500px;
-            margin: 2rem auto 0;
-            padding: 2rem;
-            border-radius: 15px;
+            margin: 1.5rem auto 0;
+            padding: 1.8rem;
+            border-radius: 16px;
             box-shadow: var(--shadow-lg);
+            border-top: 4px solid var(--primary-blue);
         }
         
         .form-row {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
         
         .submit-btn {
             width: 100%;
-            background: var(--primary-green);
+            background: linear-gradient(135deg, var(--primary-blue), #004A99);
             color: var(--white);
-            padding: 1rem;
+            padding: 0.9rem;
             border-radius: 10px;
             border: none;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
         }
         
         .submit-btn:hover {
-            background: #45a049;
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 6px 16px rgba(0, 102, 204, 0.4);
+            background: linear-gradient(135deg, #004A99, var(--primary-blue));
         }
         
         .scarcity-text {
-            color: #D32F2F;
+            color: #FF6B6B;
             font-weight: 600;
-            margin-top: 1rem;
-            font-size: 0.95rem;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
         }
         
         /* FAQ */
@@ -534,20 +583,26 @@
         
         @media (max-width: 768px) {
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.4rem;
             }
             
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 0.85rem;
             }
             
             .section-title {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .section-subtitle {
+                font-size: 0.85rem;
+                margin-bottom: 1.5rem;
             }
             
             .calculator-card,
             .site-visit-form {
-                padding: 1.5rem;
+                padding: 1rem;
             }
             
             .sticky-cta {
@@ -555,28 +610,91 @@
             }
             
             .badges {
-                gap: 1.5rem;
+                gap: 1rem;
+            }
+            
+            .input-group {
+                margin-bottom: 0.8rem;
+            }
+            
+            label {
+                font-size: 0.8rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            input[type="number"],
+            input[type="text"],
+            input[type="tel"],
+            select {
+                padding: 0.5rem 0.6rem;
+                font-size: 0.9rem;
+            }
+            
+            .calculate-btn {
+                padding: 0.65rem;
+                font-size: 0.85rem;
+            }
+            
+            .results.show {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 0.6rem;
+            }
+            
+            .result-item {
+                padding: 0.8rem;
+                border-left: 3px solid var(--primary-green);
+            }
+            
+            .result-label {
+                font-size: 0.65rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .result-value {
+                font-size: 1rem;
+            }
+            
+            .result-icon {
+                font-size: 1.5rem;
+                margin-bottom: 0.2rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+                margin-top: 1rem;
+            }
+            
+            .benefit-card {
+                padding: 0.9rem;
+                border-radius: 10px;
+            }
+            
+            .benefit-icon {
+                font-size: 1.8rem;
+                margin-bottom: 0.4rem;
+            }
+            
+            .benefit-title {
+                font-size: 0.85rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .benefit-card p {
+                font-size: 0.75rem;
+                line-height: 1.3;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Ctext x='10' y='40' font-family='Arial' font-size='28' font-weight='bold' fill='%232C2C2C'%3ESuryaSetu%3C/text%3E%3Ctext x='10' y='55' font-family='Arial' font-size='10' fill='%234CAF50'%3EENERGY SOLUTION%3C/text%3E%3Ccircle cx='180' cy='20' r='12' fill='%23FFD700'/%3E%3Cpath d='M 165 35 Q 170 25 175 35' stroke='%234CAF50' stroke-width='3' fill='none'/%3E%3C/svg%3E" alt="SuryaSetu Energy Solution" class="logo" onclick="window.scrollTo(0,0)">
-            <a href="#book-visit" class="header-cta">Book Free Visit</a>
-        </div>
-    </header>
+    <!-- Header removed as requested -->
+    <!-- Hero removed as requested -->
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Calculate Your Perfect Solar System Size</h1>
-            <p class="hero-subtitle">Get instant solar panel recommendations from your electricity bill and start saving today!</p>
-            <a href="#calculator" class="cta-primary">Calculate My Solar Size →</a>
-        </div>
-    </section>
+    <!-- Logo Section -->
+    <div style="background: var(--white); padding: 1.5rem 5%; text-align: center; box-shadow: var(--shadow);">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Ctext x='10' y='40' font-family='Arial' font-size='28' font-weight='bold' fill='%232C2C2C'%3ESuryaSetu%3C/text%3E%3Ctext x='10' y='55' font-family='Arial' font-size='10' fill='%234CAF50'%3EENERGY SOLUTION%3C/text%3E%3Ccircle cx='180' cy='20' r='12' fill='%23FFD700'/%3E%3Cpath d='M 165 35 Q 170 25 175 35' stroke='%234CAF50' stroke-width='3' fill='none'/%3E%3C/svg%3E" alt="SuryaSetu Energy Solution" style="height: 60px;">
+    </div>
 
     <!-- Calculator Section -->
     <section class="calculator-section" id="calculator">
@@ -586,30 +704,36 @@
             
             <div class="calculator-card">
                 <div class="input-group">
-                    <label for="units">Monthly Electricity Units (kWh)</label>
-                    <input type="number" id="units" placeholder="e.g., 300" min="1">
+                    <label for="billAmount">Monthly Light Bill Amount (₹)</label>
+                    <input type="number" id="billAmount" placeholder="e.g., 2000" min="1">
                 </div>
-                
+
                 <button class="calculate-btn" onclick="calculateSolar()">Calculate Solar System →</button>
+                <a href="#benefits" class="cta-primary" style="display:inline-block;margin-top:0.5rem;text-decoration:none;width:100%;text-align:center;padding:0.8rem;font-size:0.95rem;">Go to Solar Benefits →</a>
                 
                 <div class="results" id="results">
                     <div class="result-item">
-                        <div class="result-label">Recommended Solar System Size</div>
+                        <div class="result-icon">⚡</div>
+                        <div class="result-label">Solar System Size</div>
                         <div class="result-value" id="solarSize">-</div>
                     </div>
                     <div class="result-item">
-                        <div class="result-label">Estimated Monthly Savings</div>
+                        <div class="result-icon">💰</div>
+                        <div class="result-label">Monthly Savings</div>
                         <div class="result-value" id="monthlySavings">-</div>
                     </div>
                     <div class="result-item">
+                        <div class="result-icon">📈</div>
                         <div class="result-label">Annual Savings</div>
                         <div class="result-value" id="annualSavings">-</div>
                     </div>
                     <div class="result-item">
-                        <div class="result-label">Approximate System Cost</div>
+                        <div class="result-icon">🏦</div>
+                        <div class="result-label">Net System Cost</div>
                         <div class="result-value" id="systemCost">-</div>
                     </div>
                     <div class="result-item">
+                        <div class="result-icon">⏱️</div>
                         <div class="result-label">Payback Period</div>
                         <div class="result-value" id="payback">-</div>
                     </div>
@@ -619,29 +743,29 @@
     </section>
 
     <!-- Why Go Solar -->
-    <section>
+    <section id="benefits">
         <div class="container">
             <h2 class="section-title">Why Go Solar?</h2>
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon">💰</div>
                     <h3 class="benefit-title">Save Money</h3>
-                    <p>Reduce electricity bills by up to 90%. Start saving from day one.</p>
+                    <p>Eliminate 85-100% of your electricity bills. ROI in 3-5 years with 25+ years of savings.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">🌍</div>
-                    <h3 class="benefit-title">Go Green</h3>
-                    <p>Reduce carbon footprint and contribute to a cleaner environment.</p>
+                    <h3 class="benefit-title">Environment</h3>
+                    <p>Avoid 2-3 tons of CO₂ annually. Clean, renewable energy for the planet's future.</p>
                 </div>
                 <div class="benefit-card">
-                    <div class="benefit-icon">🏆</div>
-                    <h3 class="benefit-title">Government Subsidy</h3>
-                    <p>Get up to 40% subsidy on rooftop solar installations.</p>
+                    <div class="benefit-icon">💳</div>
+                    <h3 class="benefit-title">Subsidy Available</h3>
+                    <p>₹30,000/kW up to 2kW. Max subsidy: ₹78,000. Government scheme available.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">⚡</div>
-                    <h3 class="benefit-title">Energy Independence</h3>
-                    <p>Generate your own power and become energy self-sufficient.</p>
+                    <h3 class="benefit-title">Energy Freedom</h3>
+                    <p>Zero dependency on grid. Net metering: Earn credits for excess energy.</p>
                 </div>
             </div>
         </div>
@@ -712,7 +836,10 @@
                 <div class="form-row">
                     <input type="text" placeholder="Your City" required>
                 </div>
-                <button type="submit" class="submit-btn">Book Free Site Visit</button>
+                <button type="submit" class="submit-btn">📅 Book Free Site Visit</button>
+                <div style="margin-top: 1rem; display: flex; gap: 0.8rem;">
+                    <a href="https://wa.me/918261983642?text=Hi%20SuryaSetu%2C%20I%27d%20like%20to%20know%20more%20about%20solar%20installation" target="_blank" style="flex: 1; background: #25D366; color: white; padding: 0.8rem; border-radius: 8px; text-decoration: none; text-align: center; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: all 0.3s ease;" onmouseover="this.style.boxShadow='0 6px 16px rgba(37, 211, 102, 0.4)'" onmouseout="this.style.boxShadow='0 4px 12px rgba(37, 211, 102, 0.3)'">💬 Chat on WhatsApp</a>
+                </div>
                 <p class="scarcity-text">⚠️ Limited slots available per city this week!</p>
             </form>
         </div>
@@ -792,38 +919,93 @@
     <div class="sticky-cta">
         <a href="#book-visit">📞 Book FREE Site Visit Now</a>
     </div>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918261983642" target="_blank" style="position: fixed; bottom: 80px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); text-decoration: none; z-index: 998; transition: all 0.3s ease; border: none;" 
+        onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 6px 16px rgba(37, 211, 102, 0.6)'"
+        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(37, 211, 102, 0.4)'">
+        💬
+    </a>
 
     <script>
+        // Region-specific solar generation and costs
+        const regionData = {
+            pune: {
+                name: 'Pune, Maharashtra',
+                solarGeneration: 4.5, // units/kW/day
+                residential: {
+                    tariff: 8,
+                    costPerKw: 60000, // ₹60,000/kW before subsidy
+                    subsidyPerKw: 18000 // ₹18,000/kW subsidy for up to 10kW
+                },
+                commercial: {
+                    tariff: 12,
+                    costPerKw: 65000, // ₹65,000/kW before subsidy
+                    subsidyPerKw: 9000 // ₹9,000/kW for above 10kW
+                }
+            }
+        };
+
         // Solar Calculator Logic
         function calculateSolar() {
-            const units = parseFloat(document.getElementById('units').value);
+            const billAmount = parseFloat(document.getElementById('billAmount').value);
+            const data = regionData['pune'];
             
-            if (!units || units <= 0) {
-                alert('Please enter a valid number of units');
+            if (!billAmount || billAmount <= 0) {
+                alert('Please enter a valid bill amount');
                 return;
             }
             
-            // Formula: Solar kW = (Monthly Units ÷ 30) ÷ 4
+            // Determine if residential or commercial based on bill amount
+            // Residential typically under ₹10,000/month, commercial above
+            const isCommercial = billAmount > 10000;
+            const tariffData = isCommercial ? data.commercial : data.residential;
+            const tariff = tariffData.tariff;
+            
+            // Calculate units from bill amount
+            const units = billAmount / tariff;
+            
+            // Formula: Solar kW = (Monthly Units ÷ 30) ÷ Solar Generation per kW per day
             const dailyUnits = units / 30;
-            const rawSolarKw = dailyUnits / 4;
+            const rawSolarKw = dailyUnits / data.solarGeneration;
             
             // Round up to nearest 0.5 kW
             const solarKw = Math.ceil(rawSolarKw * 2) / 2;
             
+            // Calculate costs dynamically based on system size
+            const totalCostBeforeSubsidy = solarKw * tariffData.costPerKw;
+            
+            // NEW Subsidy calculation - Tiered structure
+            // Up to 2 kW: ₹30,000 per kW
+            // Above 2 kW up to 3 kW: ₹30,000/kW for first 2 kW + ₹18,000 for 3rd kW
+            // Above 3 kW: Fixed maximum subsidy of ₹78,000
+            let subsidyAmount = 0;
+            
+            if (solarKw <= 2) {
+                // Up to 2 kW: ₹30,000/kW
+                subsidyAmount = solarKw * 30000;
+            } else if (solarKw <= 3) {
+                // 2-3 kW: ₹30,000 × 2 + ₹18,000 for the extra kW
+                subsidyAmount = (2 * 30000) + ((solarKw - 2) * 18000);
+            } else {
+                // Above 3 kW: Fixed max of ₹78,000
+                subsidyAmount = 78000;
+            }
+            
+            const netCost = totalCostBeforeSubsidy - subsidyAmount;
+            
             // Calculations
-            const avgElectricityRate = 7; // ₹7 per unit (conservative estimate)
-            const monthlySavings = units * avgElectricityRate * 0.85; // 85% bill reduction
+            const monthlySavings = billAmount;
             const annualSavings = monthlySavings * 12;
-            const costPerKw = 65000; // ₹65,000 per kW (after subsidy)
-            const systemCost = solarKw * costPerKw;
-            const paybackYears = (systemCost / annualSavings).toFixed(1);
+            const paybackYears = (annualSavings > 0) ? (netCost / annualSavings).toFixed(1) : 'N/A';
             
             // Display results
-            document.getElementById('solarSize').textContent = solarKw + ' kW';
+            const systemType = isCommercial ? ' (Commercial)' : ' (Residential)';
+            document.getElementById('solarSize').textContent = solarKw + ' kW' + systemType;
             document.getElementById('monthlySavings').textContent = '₹' + Math.round(monthlySavings).toLocaleString('en-IN');
             document.getElementById('annualSavings').textContent = '₹' + Math.round(annualSavings).toLocaleString('en-IN');
-            document.getElementById('systemCost').textContent = '₹' + Math.round(systemCost).toLocaleString('en-IN');
-            document.getElementById('payback').textContent = paybackYears + ' years';
+            document.getElementById('systemCost').textContent = '₹' + Math.round(netCost).toLocaleString('en-IN') + ' (after ₹' + Math.round(subsidyAmount).toLocaleString('en-IN') + ' subsidy)';
+            document.getElementById('payback').textContent = (paybackYears === 'N/A') ? 'N/A' : (paybackYears + ' years');
             
             // Show results with animation
             const resultsDiv = document.getElementById('results');
@@ -834,11 +1016,14 @@
         }
         
         // Allow Enter key to trigger calculation
-        document.getElementById('units').addEventListener('keypress', function(event) {
+        document.getElementById('billAmount').addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 calculateSolar();
             }
         });
+        
+        // Update tariff placeholder when region changes
+        // (removed - region selector removed)
         
         // FAQ Toggle
         function toggleFaq(element) {
